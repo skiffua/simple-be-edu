@@ -10,11 +10,11 @@ export const getAllUsers = async (req, res) => {
 };
 
 export const createUser = async (req, res) => {
-    const { id, name, last_name, email, phone, card } = req.body;
+    const { id, name, last_name, email, phone, card, pass } = req.body;
     try {
         const [result] = await pool.query(
-            'INSERT INTO users (id, name, last_name, email, phone, card) VALUES (?, ?, ?, ?, ?, ?)',
-            [id, name, last_name, email, phone, card]
+            'INSERT INTO users (id, name, last_name, email, phone, card, pass) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            [id, name, last_name, email, phone, card, pass]
         );
         res.status(201).json({ id: result.insertId });
     } catch (err) {
